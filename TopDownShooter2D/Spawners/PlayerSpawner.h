@@ -12,9 +12,10 @@ inline void SpawnPlayer(const flecs::world &ecsWorld) {
     // ReSharper disable once CppExpressionWithoutSideEffects
     ecsWorld
             .entity()
-            .insert([assetManager](Position &position, Rotation &rotation, Sprite &sprite) {
+            .insert([assetManager](Position &position, Rotation &rotation, Sprite &sprite, Velocity &velocity) {
                 position = {toFloat(WINDOW_WIDTH) * 0.5f, toFloat(WINDOW_HEIGHT) * 0.5f};
                 rotation = {};
                 sprite = {assetManager->GetTexture("player")};
+                velocity = {};
             }).add<Player>();
 }
