@@ -49,6 +49,8 @@ add_executable(${CMAKE_PROJECT_NAME}
         TopDownShooter2D/Systems/Impl/RenderSystem.h
         TopDownShooter2D/Systems/Impl/RotatePlayerSystem.h
         TopDownShooter2D/Components/Impl/Player.h
+        TopDownShooter2D/Components/Impl/Velocity.h
+        TopDownShooter2D/Systems/Impl/MovementSystem.h
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE raylib flecs_static)

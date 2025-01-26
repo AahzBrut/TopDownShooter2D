@@ -5,6 +5,7 @@
 #include "Impl/Position.h"
 #include "Impl/Rotation.h"
 #include "Impl/Sprite.h"
+#include "Impl/Velocity.h"
 
 
 // ReSharper disable file CppExpressionWithoutSideEffects
@@ -15,4 +16,5 @@ inline void RegisterComponents(const flecs::world &ecsWorld) {
     ecsWorld.component<Rotation>();
     ecsWorld.component<Sprite>();
     ecsWorld.component<Player>();
+    ecsWorld.component<Velocity>();
 }
