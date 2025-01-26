@@ -39,6 +39,9 @@ add_executable(${CMAKE_PROJECT_NAME}
         TopDownShooter2D/Components/Components.h
         TopDownShooter2D/AudioManager/AudioManager.cpp
         TopDownShooter2D/AudioManager/AudioManager.h
+        TopDownShooter2D/Systems/Impl/LoadAssets.h
+        TopDownShooter2D/Systems/Impl/RenderMousePointer.h
+        TopDownShooter2D/Systems/Impl/MaintananceSystem.h
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE raylib flecs_static)

@@ -19,6 +19,7 @@ void Application::Initialize() const { // NOLINT(*-convert-member-functions-to-s
 
 void Application::Run() {
     Initialize();
+    DisableCursor();
 
     while (!WindowShouldClose()) {
         BeginDrawing();
