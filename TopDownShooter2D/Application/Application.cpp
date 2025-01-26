@@ -3,6 +3,7 @@
 
 #include "defs.h"
 #include "Components/Components.h"
+#include "Spawners/PlayerSpawner.h"
 #include "Systems/Systems.h"
 
 
@@ -15,6 +16,8 @@ void Application::Initialize() const { // NOLINT(*-convert-member-functions-to-s
     ecsWorld.set(AssetManager{});
     ecsWorld.set(AudioManager{});
     RegisterSystems(ecsWorld);
+
+    SpawnPlayer(ecsWorld);
 }
 
 void Application::Run() {
