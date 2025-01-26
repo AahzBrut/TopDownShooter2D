@@ -1,6 +1,9 @@
 #include <iostream>
+#include "Application/Application.h"
+
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    Application application;
+    application.Run();
+    return EXIT_SUCCESS;
 }

@@ -27,10 +27,22 @@ FetchContent_MakeAvailable(raylib flecs)
 
 add_executable(${CMAKE_PROJECT_NAME}
         TopDownShooter2D/main.cpp
+        TopDownShooter2D/Application/Application.cpp
+        TopDownShooter2D/Application/Application.h
+        TopDownShooter2D/defs.h
+        TopDownShooter2D/Logger.h
+        TopDownShooter2D/AssetManager/AssetManager.cpp
+        TopDownShooter2D/AssetManager/AssetManager.h
+        TopDownShooter2D/TypeDefs.h
+        TopDownShooter2D/Utils/Random.h
+        TopDownShooter2D/Systems/Systems.h
+        TopDownShooter2D/Components/Components.h
+        TopDownShooter2D/AudioManager/AudioManager.cpp
+        TopDownShooter2D/AudioManager/AudioManager.h
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE raylib flecs_static)
-target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ShootEmUp2D)
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_PROJECT_NAME})
 
 add_custom_target(COPY_ASSETS
         COMMAND
