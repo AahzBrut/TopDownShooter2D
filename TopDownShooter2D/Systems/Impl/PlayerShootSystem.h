@@ -20,7 +20,6 @@ inline void SpawnBullet(const flecs::world &ecsWorld, Weapon &weapon, AssetManag
                     rotation = {playerRotation};
                     velocity = {bulletVelocity};
                     sprite = {assetManager->GetTexture("bullet")};
-                    weapon.ammoCount--;
                 });
 }
 
@@ -32,7 +31,7 @@ inline void PlayerShootSystem(const flecs::world &ecsWorld) {
             .each([ecsWorld, assetManager](const Position &playerPosition,
                                            const Rotation &playerRotation,
                                            Weapon &weapon) {
-                if (weapon.isActive && weapon.IsReady() && IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+                if (weapon.IsReady() && IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
                     if (weapon.weaponType == WeaponType::SHOTGUN) {
                         auto fireAngle = playerRotation.rotation - SHOTGUN_ARC / 2.f;
                         for (auto i = 0; i < 8; ++i) {
@@ -43,6 +42,7 @@ inline void PlayerShootSystem(const flecs::world &ecsWorld) {
                     } else {
                         SpawnBullet(ecsWorld, weapon, assetManager, playerPosition.position, playerRotation.rotation);
                     }
+                    weapon.ammoCount--;
                 }
             });
 }

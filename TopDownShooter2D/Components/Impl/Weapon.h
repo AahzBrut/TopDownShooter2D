@@ -32,5 +32,5 @@ struct Weapon {
           lastShotTime{lastShotTime},
           isActive{isActive} {}
 
-    [[nodiscard]] bool IsReady() const { return lastShotTime <= 0.f;}
+    [[nodiscard]] bool IsReady() const { return lastShotTime <= 0.f && isActive && ammoCount > 0; }
 };
