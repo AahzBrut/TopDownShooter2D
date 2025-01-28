@@ -32,7 +32,7 @@ void Application::Run() {
 
         char stringBuffer[16];
         sprintf(&stringBuffer[0], "%d", GetFPS());
-        DrawText(stringBuffer, 10, 10, 32, WHITE);
+        DrawText(stringBuffer, 10, 30, 32, WHITE);
 
         EndDrawing();
     }

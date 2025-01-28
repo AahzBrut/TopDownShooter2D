@@ -20,7 +20,9 @@ inline void SpawnPlayer(const flecs::world &ecsWorld) {
                 Velocity &velocity,
                 Pistol &pistol,
                 Shotgun &shotgun,
-                SubmachineGun &smg
+                SubmachineGun &smg,
+                Health &health,
+                Score &score
                 ) {
                 position = {toFloat(WINDOW_WIDTH) * 0.5f, toFloat(WINDOW_HEIGHT) * 0.5f};
                 rotation = {};
@@ -30,5 +32,7 @@ inline void SpawnPlayer(const flecs::world &ecsWorld) {
                 shotgun = {};
                 shotgun = {};
                 smg = {};
+                health = {5, 5};
+                score = {};
             }).add<Player>();
 }

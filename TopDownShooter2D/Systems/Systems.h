@@ -7,6 +7,7 @@
 #include "Impl/PlayerControlSystem.h"
 #include "Impl/PlayerShootSystem.h"
 #include "Impl/RenderMousePointer.h"
+#include "Impl/RenderPlayerHudSystem.h"
 #include "Impl/RenderSystem.h"
 #include "Impl/RenderWeaponsHudSystem.h"
 #include "Impl/RotatePlayerSystem.h"
@@ -23,5 +24,6 @@ inline void RegisterSystems(const flecs::world &ecsWorld) {
     RenderSystem(ecsWorld);
     RenderMousePointer(ecsWorld);
     RenderWeaponsHudSystem(ecsWorld);
+    RenderPlayerHudSystem(ecsWorld);
     MaintananceSystem(ecsWorld);
 }
