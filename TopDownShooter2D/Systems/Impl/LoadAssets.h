@@ -8,4 +8,5 @@ inline void LoadAssets(const flecs::world &ecsWorld) {
     const auto assetManager = ecsWorld.get_mut<AssetManager>();
     assetManager->LoadTexture("mouse-pointer", "./assets/gfx/targetter.png");
     assetManager->LoadTexture("player", "./assets/gfx/donk.png");
+    assetManager->LoadTexture("bullet", "./assets/gfx/donkBullet.png");
 }

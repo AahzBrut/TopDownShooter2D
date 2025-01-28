@@ -52,6 +52,14 @@ add_executable(${CMAKE_PROJECT_NAME}
         TopDownShooter2D/Components/Impl/Velocity.h
         TopDownShooter2D/Systems/Impl/MovementSystem.h
         TopDownShooter2D/Systems/Impl/PlayerControlSystem.h
+        TopDownShooter2D/Components/Impl/Pistol.h
+        TopDownShooter2D/Components/Impl/Weapon.h
+        TopDownShooter2D/Systems/Impl/WeaponUpdateSystem.h
+        TopDownShooter2D/Components/Impl/Shotgun.h
+        TopDownShooter2D/Components/Impl/SubmachineGun.h
+        TopDownShooter2D/Data/WeaponType.h
+        TopDownShooter2D/Systems/Impl/PlayerShootSystem.h
+        TopDownShooter2D/Systems/Impl/RenderWeaponsHudSystem.h
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE raylib flecs_static)

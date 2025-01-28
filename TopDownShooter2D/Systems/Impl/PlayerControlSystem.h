@@ -3,15 +3,30 @@
 
 
 inline void PlayerControlSystem(const flecs::world &ecsWorld) {
+    auto weaponsQuery = ecsWorld.query<Weapon>();
+
     ecsWorld.system<Velocity>()
             .with<Player>()
-            .each([](const flecs::iter &it, size_t, Velocity &velocity) {
+            .each([weaponsQuery](const flecs::iter &it, size_t, Velocity &velocity) {
                 const auto deltaTime = it.delta_time();
                 Vector2 newVelocity{};
                 if (IsKeyDown(KEY_W)) newVelocity.y -= 1;
                 if (IsKeyDown(KEY_D)) newVelocity.x += 1;
                 if (IsKeyDown(KEY_S)) newVelocity.y += 1;
                 if (IsKeyDown(KEY_A)) newVelocity.x -= 1;
+
+                if (auto selectedWeapon = IsKeyPressed(KEY_ONE)
+                                              ? 1
+                                              : IsKeyPressed(KEY_TWO)
+                                                    ? 2
+                                                    : IsKeyPressed(KEY_THREE)
+                                                          ? 3
+                                                          : 0; selectedWeapon) {
+                    weaponsQuery.each([selectedWeapon](Weapon &weapon) {
+                        weapon.isActive = static_cast<int>(weapon.weaponType) == selectedWeapon;
+                        if (weapon.isActive) { LOG("Weapon selected: {}", weapon.name); }
+                    });
+                }
                 velocity.velocity = Vector2Normalize(newVelocity) * (deltaTime * MAX_PLAYER_SPEED);
             });
 }

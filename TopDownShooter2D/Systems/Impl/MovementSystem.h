@@ -8,10 +8,12 @@
 
 inline void MovementSystem(const flecs::world &ecsWorld) {
     ecsWorld.system<Position, const Velocity>()
-            .each([](const flecs::entity entity, Position &position, const Velocity &velocity) {
-                const auto newPosition = Vector2Add(position.position, velocity.velocity);
+            .each([](const flecs::iter &it, const size_t row, Position &position,
+                     const Velocity &velocity) {
+                const auto deltaTime = it.delta_time();
+                const auto newPosition = position.position + velocity.velocity * deltaTime;
 
-                if (entity.has<Player>()) {
+                if (it.entity(row).has<Player>()) {
                     const auto posX = newPosition.x < 0
                                           ? 0
                                           : newPosition.x > WINDOW_WIDTH

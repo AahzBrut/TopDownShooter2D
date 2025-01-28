@@ -6,6 +6,7 @@
 
 inline void RotatePlayerSystem(const flecs::world &ecsWorld) {
     ecsWorld.system<const Position, Rotation>()
+            .with<Player>()
             .each([](const Position &position, Rotation &rotation) {
                 const auto mousePosition = GetMousePosition();
                 const auto mouseDirection = Vector2Normalize(Vector2Subtract(mousePosition, position.position));

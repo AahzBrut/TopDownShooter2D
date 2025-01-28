@@ -6,6 +6,7 @@
 #define MAINTANANCE_TIMEOUT 3.0f
 
 #define MAX_PLAYER_SPEED 300.f
+#define SHOTGUN_ARC 15.f
 
 #define toFloat(var) static_cast<float>(var)
 #define toInt(var) static_cast<int>(var)
