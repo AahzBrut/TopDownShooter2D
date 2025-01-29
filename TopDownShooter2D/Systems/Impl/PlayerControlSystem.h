@@ -27,6 +27,5 @@ inline void PlayerControlSystem(const flecs::world &ecsWorld) {
                     });
                 }
                 velocity.velocity = Vector2Normalize(newVelocity) * MAX_PLAYER_SPEED;
-                LOG("Velocity: {}, {}", velocity.velocity.x, velocity.velocity.y );
             });
 }
