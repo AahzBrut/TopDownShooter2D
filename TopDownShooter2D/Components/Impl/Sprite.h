@@ -1,5 +1,7 @@
 #pragma once
 #include <raylib.h>
+
+#include "raymath.h"
 #include "TypeDefs.h"
 
 
@@ -15,4 +17,5 @@ struct Sprite {
     }
 
     [[nodiscard]] Vector2 GetCenterOrigin() const { return Vector2{toFloat(texture->width) * .5f, toFloat(texture->height) * .5f}; }
+    [[nodiscard]] float GetRadius() const { return Vector2Length(GetCenterOrigin()); }
 };

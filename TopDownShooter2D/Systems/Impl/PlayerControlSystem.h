@@ -7,8 +7,7 @@ inline void PlayerControlSystem(const flecs::world &ecsWorld) {
 
     ecsWorld.system<Velocity>()
             .with<Player>()
-            .each([weaponsQuery](const flecs::iter &it, size_t, Velocity &velocity) {
-                const auto deltaTime = it.delta_time();
+            .each([weaponsQuery](Velocity &velocity) {
                 Vector2 newVelocity{};
                 if (IsKeyDown(KEY_W)) newVelocity.y -= 1;
                 if (IsKeyDown(KEY_D)) newVelocity.x += 1;
@@ -27,6 +26,7 @@ inline void PlayerControlSystem(const flecs::world &ecsWorld) {
                         if (weapon.isActive) { LOG("Weapon selected: {}", weapon.name); }
                     });
                 }
-                velocity.velocity = Vector2Normalize(newVelocity) * (deltaTime * MAX_PLAYER_SPEED);
+                velocity.velocity = Vector2Normalize(newVelocity) * MAX_PLAYER_SPEED;
+                LOG("Velocity: {}, {}", velocity.velocity.x, velocity.velocity.y );
             });
 }

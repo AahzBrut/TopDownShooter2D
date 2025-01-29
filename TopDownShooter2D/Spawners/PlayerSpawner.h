@@ -1,6 +1,8 @@
 #pragma once
 #include <flecs.h>
+#include <raymath.h>
 
+#include "Components/Impl/Collider.h"
 #include "Components/Impl/Position.h"
 #include "Components/Impl/Rotation.h"
 #include "Components/Impl/Shotgun.h"
@@ -22,7 +24,8 @@ inline void SpawnPlayer(const flecs::world &ecsWorld) {
                 Shotgun &shotgun,
                 SubmachineGun &smg,
                 Health &health,
-                Score &score
+                Score &score,
+                Collider &collider
                 ) {
                 position = {toFloat(WINDOW_WIDTH) * 0.5f, toFloat(WINDOW_HEIGHT) * 0.5f};
                 rotation = {};
@@ -34,5 +37,6 @@ inline void SpawnPlayer(const flecs::world &ecsWorld) {
                 smg = {};
                 health = {5, 5};
                 score = {};
+                collider = { position.position, sprite.GetRadius(), CollisionLayer::Player};
             }).add<Player>();
 }

@@ -63,6 +63,12 @@ add_executable(${CMAKE_PROJECT_NAME}
         TopDownShooter2D/Components/Impl/Health.h
         TopDownShooter2D/Systems/Impl/RenderPlayerHudSystem.h
         TopDownShooter2D/Components/Impl/Score.h
+        TopDownShooter2D/Physics/CollisionLayersSettings.cpp
+        TopDownShooter2D/Physics/CollisionLayersSettings.h
+        TopDownShooter2D/Components/Impl/Collider.h
+        TopDownShooter2D/Components/Impl/Damage.h
+        TopDownShooter2D/Systems/Impl/SyncCollidersSystem.h
+        TopDownShooter2D/Systems/Impl/RenderCollidersSystem.h
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE raylib flecs_static)

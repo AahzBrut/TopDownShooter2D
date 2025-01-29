@@ -13,13 +13,20 @@ inline void SpawnBullet(const flecs::world &ecsWorld, Weapon &weapon, AssetManag
             Position &position,
             Rotation &rotation,
             Velocity &velocity,
-            Sprite &sprite) {
+            Sprite &sprite,
+            Damage &damage,
+            Collider &collider) {
                     const auto bulletVelocity =
                             Vector2Rotate(Vector2(0, -1), playerRotation * DEG2RAD) * weapon.bulletSpeed;
                     position = {playerPosition};
                     rotation = {playerRotation};
                     velocity = {bulletVelocity};
                     sprite = {assetManager->GetTexture("bullet")};
+                    damage = {weapon.bulletDamage};
+                    collider = {
+                        position.position,
+                        sprite.GetRadius(), CollisionLayer::PlayerBullet
+                    };
                 });
 }
 
