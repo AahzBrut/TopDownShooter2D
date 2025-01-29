@@ -5,6 +5,8 @@
 
 #define MAINTANANCE_TIMEOUT 3.0f
 
+#define ENEMY_SPAWN_INTERVAL 0.5f
+
 #define MAX_PLAYER_SPEED 300.f
 #define SHOTGUN_ARC 15.f
 

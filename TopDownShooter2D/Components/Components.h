@@ -3,6 +3,7 @@
 #include "AudioManager/AudioManager.h"
 #include "Impl/Collider.h"
 #include "Impl/Damage.h"
+#include "Impl/Enemy.h"
 #include "Impl/Health.h"
 #include "Impl/Pistol.h"
 #include "Impl/Player.h"
@@ -24,6 +25,7 @@ inline void RegisterComponents(const flecs::world &ecsWorld) {
     ecsWorld.component<Rotation>();
     ecsWorld.component<Sprite>();
     ecsWorld.component<Player>();
+    ecsWorld.component<Enemy>();
     ecsWorld.component<Velocity>();
     ecsWorld.component<Weapon>();
     ecsWorld.component<Pistol>().is_a<Weapon>();

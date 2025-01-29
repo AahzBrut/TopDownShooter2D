@@ -1,6 +1,7 @@
 #pragma once
 #include <flecs.h>
 
+#include "Impl/EnemyControlSystem.h"
 #include "Impl/LoadAssets.h"
 #include "Impl/MaintananceSystem.h"
 #include "Impl/MovementSystem.h"
@@ -12,6 +13,7 @@
 #include "Impl/RenderSystem.h"
 #include "Impl/RenderWeaponsHudSystem.h"
 #include "Impl/RotatePlayerSystem.h"
+#include "Impl/SpawnEnemySystem.h"
 #include "Impl/SyncCollidersSystem.h"
 #include "Impl/WeaponUpdateSystem.h"
 
@@ -28,6 +30,8 @@ inline void RegisterSystems(const flecs::world &ecsWorld) {
     RenderMousePointer(ecsWorld);
     RenderWeaponsHudSystem(ecsWorld);
     RenderPlayerHudSystem(ecsWorld);
-    //RenderCollidersSystem(ecsWorld);
+    RenderCollidersSystem(ecsWorld);
     MaintananceSystem(ecsWorld);
+    SpawnEnemySystem(ecsWorld);
+    EnemyControlSystem(ecsWorld);
 }

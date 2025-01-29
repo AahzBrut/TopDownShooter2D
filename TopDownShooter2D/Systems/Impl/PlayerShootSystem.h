@@ -2,33 +2,8 @@
 #include <flecs.h>
 
 #include "AssetManager/AssetManager.h"
+#include "Spawners/BulletSpawner.h"
 
-
-inline void SpawnBullet(const flecs::world &ecsWorld, Weapon &weapon, AssetManager *assetManager,
-                        const Vector2 &playerPosition, float playerRotation) {
-    weapon.lastShotTime = 60.f / weapon.rateOfFire;
-    ecsWorld
-            .entity()
-            .insert([assetManager, playerPosition, playerRotation, &weapon](
-            Position &position,
-            Rotation &rotation,
-            Velocity &velocity,
-            Sprite &sprite,
-            Damage &damage,
-            Collider &collider) {
-                    const auto bulletVelocity =
-                            Vector2Rotate(Vector2(0, -1), playerRotation * DEG2RAD) * weapon.bulletSpeed;
-                    position = {playerPosition};
-                    rotation = {playerRotation};
-                    velocity = {bulletVelocity};
-                    sprite = {assetManager->GetTexture("bullet")};
-                    damage = {weapon.bulletDamage};
-                    collider = {
-                        position.position,
-                        sprite.GetRadius(), CollisionLayer::PlayerBullet
-                    };
-                });
-}
 
 inline void PlayerShootSystem(const flecs::world &ecsWorld) {
     const auto assetManager = ecsWorld.get_mut<AssetManager>();
@@ -43,11 +18,11 @@ inline void PlayerShootSystem(const flecs::world &ecsWorld) {
                         auto fireAngle = playerRotation.rotation - SHOTGUN_ARC / 2.f;
                         for (auto i = 0; i < 8; ++i) {
                             SpawnBullet(ecsWorld, weapon, assetManager, playerPosition.position,
-                                        fireAngle);
+                                        fireAngle, CollisionLayer::PlayerBullet);
                             fireAngle += SHOTGUN_ARC / 8.f;
                         }
                     } else {
-                        SpawnBullet(ecsWorld, weapon, assetManager, playerPosition.position, playerRotation.rotation);
+                        SpawnBullet(ecsWorld, weapon, assetManager, playerPosition.position, playerRotation.rotation, CollisionLayer::PlayerBullet);
                     }
                     weapon.ammoCount--;
                 }
