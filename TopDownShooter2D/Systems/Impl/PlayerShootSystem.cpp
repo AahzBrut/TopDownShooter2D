@@ -6,6 +6,7 @@
 #include "Components/Impl/Position.h"
 #include "Components/Impl/Rotation.h"
 #include "Components/Impl/Weapon.h"
+#include "Physics/CollisionLayersSettings.h"
 #include "Spawners/BulletSpawner.h"
 
 

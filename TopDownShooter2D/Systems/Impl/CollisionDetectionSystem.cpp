@@ -4,6 +4,7 @@
 #include "Logger.h"
 #include "Components/Impl/Player.h"
 #include "Components/Impl/Score.h"
+#include "Spawners/BonusSpawner.h"
 
 
 bool IsIntersects(const Position position1, const Collider collider1, const Position position2, const Collider collider2) {
@@ -25,9 +26,11 @@ void CollisionDetectionSystem(const flecs::world &ecsWorld) {
                         if (IsIntersects(position1, collider1, position2, collider2)) {
                             if (collider1.IsEnemy() && collider2.IsBullet() || collider1.IsBullet() && collider2.IsEnemy() ) {
                                 LOG("Bullet hits enemy");
+                                const auto enemyPosition = collider1.IsEnemy() ? position1.position : position2.position;
                                 if (const auto playerEntity = playerQuery.find([](const Player &) { return true; })) {
                                     const auto playerScore = playerEntity.get_mut<Score>();
                                     playerScore->amount += 10;
+                                    SpawnBonus(ecsWorld, enemyPosition);
                                 }
                             }
 

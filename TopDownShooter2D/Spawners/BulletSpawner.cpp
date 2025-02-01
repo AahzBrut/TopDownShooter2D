@@ -1,10 +1,13 @@
 #include "Spawners/BulletSpawner.h"
 
+#include "AssetManager/AssetManager.h"
+#include "Components/Impl/Collider.h"
 #include "Components/Impl/Damage.h"
 #include "Components/Impl/Position.h"
 #include "Components/Impl/Rotation.h"
 #include "Components/Impl/Sprite.h"
 #include "Components/Impl/Velocity.h"
+#include "Components/Impl/Weapon.h"
 
 
 void SpawnBullet(const flecs::world &ecsWorld, Weapon &weapon, AssetManager *assetManager,

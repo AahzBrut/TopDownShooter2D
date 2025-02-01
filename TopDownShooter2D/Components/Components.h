@@ -1,6 +1,5 @@
 #pragma once
-#include "AssetManager/AssetManager.h"
-#include "AudioManager/AudioManager.h"
+#include "Impl/Bonus.h"
 #include "Impl/Collider.h"
 #include "Impl/Damage.h"
 #include "Impl/Enemy.h"
@@ -35,4 +34,5 @@ inline void RegisterComponents(const flecs::world &ecsWorld) {
     ecsWorld.component<Score>();
     ecsWorld.component<Collider>();
     ecsWorld.component<Damage>();
+    ecsWorld.component<Bonus>();
 }

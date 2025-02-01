@@ -2,6 +2,8 @@
 #include <raylib.h>
 
 #include "defs.h"
+#include "AssetManager/AssetManager.h"
+#include "AudioManager/AudioManager.h"
 #include "Components/Components.h"
 #include "Spawners/PlayerSpawner.h"
 #include "Systems/Systems.h"

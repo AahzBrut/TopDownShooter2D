@@ -7,6 +7,7 @@ enum class CollisionLayer {
     PlayerBullet,
     Enemy,
     EnemyBullet,
+    BonusPickup,
     LastLayer,
 };
 
