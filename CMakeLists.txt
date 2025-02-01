@@ -73,6 +73,7 @@ add_executable(${CMAKE_PROJECT_NAME}
         TopDownShooter2D/Components/Impl/Enemy.h
         TopDownShooter2D/Systems/Impl/SpawnEnemySystem.h
         TopDownShooter2D/Systems/Impl/EnemyControlSystem.h
+        TopDownShooter2D/Systems/Impl/CollisionDetectionSystem.h
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE raylib flecs_static)

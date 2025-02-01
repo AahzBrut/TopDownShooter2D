@@ -3,7 +3,7 @@
 
 
 inline void PlayerControlSystem(const flecs::world &ecsWorld) {
-    auto weaponsQuery = ecsWorld.query<Weapon>();
+    auto weaponsQuery = ecsWorld.query_builder<Weapon>().with<Player>().build();
 
     ecsWorld.system<Velocity>(__func__)
             .with<Player>()

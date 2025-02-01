@@ -1,6 +1,7 @@
 #pragma once
 #include <flecs.h>
 
+#include "Impl/CollisionDetectionSystem.h"
 #include "Impl/EnemyControlSystem.h"
 #include "Impl/LoadAssets.h"
 #include "Impl/MaintananceSystem.h"
@@ -24,6 +25,7 @@ inline void RegisterSystems(const flecs::world &ecsWorld) {
     PlayerShootSystem(ecsWorld);
     RotatePlayerSystem(ecsWorld);
     MovementSystem(ecsWorld);
+    CollisionDetectionSystem(ecsWorld);
     RenderSystem(ecsWorld);
     RenderMousePointer(ecsWorld);
     RenderWeaponsHudSystem(ecsWorld);
