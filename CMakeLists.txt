@@ -97,6 +97,8 @@ add_executable(${CMAKE_PROJECT_NAME}
         TopDownShooter2D/Components/Impl/Bonus.h
         TopDownShooter2D/Systems/Impl/BulletDestructionSystem.cpp
         TopDownShooter2D/Systems/Impl/BulletDestructionSystem.h
+        TopDownShooter2D/Systems/Impl/RenderGridSystem.cpp
+        TopDownShooter2D/Systems/Impl/RenderGridSystem.h
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE raylib flecs_static)

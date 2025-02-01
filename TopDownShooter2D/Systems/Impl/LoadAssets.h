@@ -14,4 +14,5 @@ inline void LoadAssets(const flecs::world &ecsWorld) {
     assetManager->LoadTexture("ammo-smg", "./assets/gfx/ammo-rifle.png");
     assetManager->LoadTexture("ammo-shotgun", "./assets/gfx/ammo-shotgun.png");
     assetManager->LoadTexture("health", "./assets/gfx/health-red.png");
+    assetManager->LoadTexture("grid", "./assets/gfx/grid.png");
 }
