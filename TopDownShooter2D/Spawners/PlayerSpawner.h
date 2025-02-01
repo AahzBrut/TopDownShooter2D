@@ -35,6 +35,6 @@ inline void SpawnPlayer(const flecs::world &ecsWorld) {
                 smg = {};
                 health = {5, 5};
                 score = {};
-                collider = { position.position, sprite.GetRadius(), CollisionLayer::Player};
+                collider = { sprite.GetRadius() * .8f, CollisionLayer::Player};
             }).add<Player>();
 }

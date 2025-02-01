@@ -67,7 +67,6 @@ add_executable(${CMAKE_PROJECT_NAME}
         TopDownShooter2D/Physics/CollisionLayersSettings.h
         TopDownShooter2D/Components/Impl/Collider.h
         TopDownShooter2D/Components/Impl/Damage.h
-        TopDownShooter2D/Systems/Impl/SyncCollidersSystem.h
         TopDownShooter2D/Systems/Impl/RenderCollidersSystem.h
         TopDownShooter2D/Spawners/BulletSpawner.h
         TopDownShooter2D/Spawners/EnemySpawner.h

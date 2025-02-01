@@ -4,7 +4,6 @@
 
 
 struct Collider {
-    Vector2 center;
     float radius;
     CollisionLayer collisionLayer;
 };

@@ -31,9 +31,6 @@ inline void SpawnBullet(const flecs::world &ecsWorld, Weapon &weapon, AssetManag
                     velocity = {bulletVelocity};
                     sprite = {assetManager->GetTexture("bullet")};
                     damage = {weapon.bulletDamage};
-                    collider = {
-                        position.position,
-                        sprite.GetRadius(), collisionLayer
-                    };
+                    collider = {sprite.GetRadius(), collisionLayer};
                 });
 }

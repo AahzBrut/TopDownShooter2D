@@ -14,7 +14,6 @@
 #include "Impl/RenderWeaponsHudSystem.h"
 #include "Impl/RotatePlayerSystem.h"
 #include "Impl/SpawnEnemySystem.h"
-#include "Impl/SyncCollidersSystem.h"
 #include "Impl/WeaponUpdateSystem.h"
 
 
@@ -25,7 +24,6 @@ inline void RegisterSystems(const flecs::world &ecsWorld) {
     PlayerShootSystem(ecsWorld);
     RotatePlayerSystem(ecsWorld);
     MovementSystem(ecsWorld);
-    SyncCollidersSystem(ecsWorld);
     RenderSystem(ecsWorld);
     RenderMousePointer(ecsWorld);
     RenderWeaponsHudSystem(ecsWorld);

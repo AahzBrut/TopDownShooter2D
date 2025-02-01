@@ -42,6 +42,6 @@ inline void SpawnEnemy(const flecs::world &ecsWorld, Vector2 spawnPosition) {
                 smg = {};
                 health = {5, 5};
                 score = {};
-                collider = { position.position, sprite.GetRadius(), CollisionLayer::Enemy};
+                collider = { sprite.GetRadius() * 0.6f, CollisionLayer::Enemy};
             }).add<Enemy>();
 }
