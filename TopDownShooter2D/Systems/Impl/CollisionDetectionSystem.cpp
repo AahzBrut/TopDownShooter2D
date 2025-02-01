@@ -2,8 +2,13 @@
 #include <raymath.h>
 
 #include "Logger.h"
+#include "Components/Impl/Bonus.h"
+#include "Components/Impl/Health.h"
+#include "Components/Impl/Pistol.h"
 #include "Components/Impl/Player.h"
 #include "Components/Impl/Score.h"
+#include "Components/Impl/Shotgun.h"
+#include "Components/Impl/SubmachineGun.h"
 #include "Spawners/BonusSpawner.h"
 
 
@@ -32,6 +37,25 @@ void CollisionDetectionSystem(const flecs::world &ecsWorld) {
                                     playerScore->amount += 10;
                                     SpawnBonus(ecsWorld, enemyPosition);
                                 }
+                            } else if (collider1.IsPlayer() && collider2.IsBonus() || collider1.IsBonus() && collider2.IsPlayer() ) {
+                                const auto playerEntity = collider1.IsPlayer() ? entity1 : entity2;
+                                const auto bonusEntity = collider1.IsBonus() ? entity1 : entity2;
+                                switch (const auto bonus = bonusEntity.get<Bonus>(); bonus->bonusType) {
+                                    case BonusType::PistolAmmo:
+                                        playerEntity.get_mut<Pistol>()->ammoCount += bonus->amount;
+                                        break;
+                                    case BonusType::ShotgunAmmo:
+                                        playerEntity.get_mut<Shotgun>()->ammoCount += bonus->amount;
+                                        break;
+                                    case BonusType::SmgAmmo:
+                                        playerEntity.get_mut<SubmachineGun>()->ammoCount += bonus->amount;
+                                        break;
+                                    case BonusType::Health:
+                                        playerEntity.get_mut<Health>()->amount += bonus->amount;
+                                        break;
+                                }
+                                bonusEntity.destruct();
+                                return;
                             }
 
                             entity1.destruct();
