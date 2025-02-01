@@ -75,6 +75,22 @@ add_executable(${CMAKE_PROJECT_NAME}
         TopDownShooter2D/Systems/Impl/EnemyControlSystem.h
         TopDownShooter2D/Systems/Impl/CollisionDetectionSystem.h
         TopDownShooter2D/Systems/Impl/CollisionDetectionSystem.cpp
+        TopDownShooter2D/Systems/Impl/EnemyControlSystem.cpp
+        TopDownShooter2D/Systems/Impl/MaintananceSystem.cpp
+        TopDownShooter2D/Systems/Impl/MovementSystem.cpp
+        TopDownShooter2D/Systems/Impl/PlayerControlSystem.cpp
+        TopDownShooter2D/Systems/Impl/PlayerShootSystem.cpp
+        TopDownShooter2D/Systems/Impl/RenderCollidersSystem.cpp
+        TopDownShooter2D/Systems/Impl/RenderMousePointer.cpp
+        TopDownShooter2D/Systems/Impl/RenderPlayerHudSystem.cpp
+        TopDownShooter2D/Systems/Impl/RenderSystem.cpp
+        TopDownShooter2D/Systems/Impl/RenderWeaponsHudSystem.cpp
+        TopDownShooter2D/Systems/Impl/RotatePlayerSystem.cpp
+        TopDownShooter2D/Systems/Impl/SpawnEnemySystem.cpp
+        TopDownShooter2D/Systems/Impl/WeaponUpdateSystem.cpp
+        TopDownShooter2D/Spawners/BulletSpawner.cpp
+        TopDownShooter2D/Spawners/EnemySpawner.cpp
+        TopDownShooter2D/Spawners/PlayerSpawner.cpp
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE raylib flecs_static)

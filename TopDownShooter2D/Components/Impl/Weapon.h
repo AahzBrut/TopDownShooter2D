@@ -1,4 +1,7 @@
 #pragma once
+
+#include <string>
+
 #include "Data/WeaponType.h"
 
 

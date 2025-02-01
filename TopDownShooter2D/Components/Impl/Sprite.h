@@ -1,7 +1,9 @@
 #pragma once
-#include <raylib.h>
 
-#include "raymath.h"
+#include <raylib.h>
+#include <raymath.h>
+
+#include "defs.h"
 #include "TypeDefs.h"
 
 
