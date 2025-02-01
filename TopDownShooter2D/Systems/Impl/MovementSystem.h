@@ -7,7 +7,7 @@
 
 
 inline void MovementSystem(const flecs::world &ecsWorld) {
-    ecsWorld.system<Position, const Velocity>()
+    ecsWorld.system<Position, const Velocity>(__func__)
             .each([](const flecs::iter &it, const size_t row, Position &position,
                      const Velocity &velocity) {
                 const auto deltaTime = it.delta_time();

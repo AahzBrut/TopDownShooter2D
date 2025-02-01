@@ -6,7 +6,7 @@
 
 inline void MaintananceSystem(const flecs::world &ecsWorld) {
     auto audioManager = ecsWorld.get_mut<AudioManager>();
-    ecsWorld.system()
+    ecsWorld.system(__func__)
             .interval(MAINTANANCE_TIMEOUT)
             .run([audioManager](const flecs::iter) {
                 audioManager->Update();

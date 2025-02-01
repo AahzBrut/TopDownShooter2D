@@ -8,7 +8,7 @@
 inline void PlayerShootSystem(const flecs::world &ecsWorld) {
     const auto assetManager = ecsWorld.get_mut<AssetManager>();
 
-    ecsWorld.system<const Position, const Rotation, Weapon>()
+    ecsWorld.system<const Position, const Rotation, Weapon>(__func__)
             .with<Player>()
             .each([ecsWorld, assetManager](const Position &playerPosition,
                                            const Rotation &playerRotation,

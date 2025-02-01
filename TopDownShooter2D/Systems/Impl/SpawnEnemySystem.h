@@ -9,7 +9,7 @@
 inline void SpawnEnemySystem(const flecs::world &ecsWorld) {
     const auto playerQuery = ecsWorld.query_builder<const Position>().with<Player>().build();
 
-    ecsWorld.system()
+    ecsWorld.system(__func__)
             .interval(ENEMY_SPAWN_INTERVAL)
             .run([&ecsWorld, playerQuery](const flecs::iter &) {
                 if (const auto playerEntity = playerQuery.find([](const Position &) { return true; })) {

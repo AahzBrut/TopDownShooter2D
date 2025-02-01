@@ -4,7 +4,7 @@
 
 inline void RenderPlayerHudSystem(const flecs::world &ecsWorld) {
     const auto countEnemiesQuery = ecsWorld.query_builder().with<Enemy>().build();
-    ecsWorld.system<const Health, const Score>()
+    ecsWorld.system<const Health, const Score>(__func__)
             .with<Player>()
             .kind(flecs::OnStore)
             .each([countEnemiesQuery](const Health &health, const Score &score) {

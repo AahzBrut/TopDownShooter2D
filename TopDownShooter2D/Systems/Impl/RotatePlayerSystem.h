@@ -5,7 +5,7 @@
 
 
 inline void RotatePlayerSystem(const flecs::world &ecsWorld) {
-    ecsWorld.system<const Position, Rotation>()
+    ecsWorld.system<const Position, Rotation>(__func__)
             .with<Player>()
             .each([](const Position &position, Rotation &rotation) {
                 const auto mousePosition = GetMousePosition();

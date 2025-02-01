@@ -4,7 +4,7 @@
 
 
 inline void RenderSystem(const flecs::world &ecsWorld) {
-    ecsWorld.system<const Position, const Rotation, const Sprite>()
+    ecsWorld.system<const Position, const Rotation, const Sprite>(__func__)
             .kind(flecs::OnStore)
             .each([](const Position &position, const Rotation &rotation, const Sprite &sprite) {
 

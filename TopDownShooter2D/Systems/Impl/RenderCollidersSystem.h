@@ -4,7 +4,7 @@
 #include "Components/Impl/Collider.h"
 
 inline void RenderCollidersSystem(const flecs::world &ecsWorld) {
-    ecsWorld.system<const Collider>()
+    ecsWorld.system<const Collider>(__func__)
             .kind(flecs::OnStore)
             .each([](const Collider &collider) {
                 static auto showColliders = false;

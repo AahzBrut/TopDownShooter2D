@@ -6,7 +6,7 @@
 inline void EnemyControlSystem(const flecs::world &ecsWorld) {
     const auto playerQuery = ecsWorld.query_builder<const Position>().with<Player>().build();
 
-    ecsWorld.system<const Position, Rotation, Velocity>()
+    ecsWorld.system<const Position, Rotation, Velocity>(__func__)
             .with<Enemy>()
             .run([playerQuery](flecs::iter &it) {
                 playerQuery.each([&it](const Position &playerPosition) {

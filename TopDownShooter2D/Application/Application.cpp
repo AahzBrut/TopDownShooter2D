@@ -7,10 +7,15 @@
 #include "Systems/Systems.h"
 
 
-// ReSharper disable once CppMemberFunctionMayBeStatic
-void Application::Initialize() const { // NOLINT(*-convert-member-functions-to-static)
+// ReSharper disable once CppMemberFunctionMayBeConst
+void Application::Initialize() {
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Shoot 'em up");
     InitAudioDevice();
+
+    // SetTargetFPS(60);
+    // ecsWorld.import<flecs::units>();
+    // ecsWorld.import<flecs::stats>();
+    // ecsWorld.set<flecs::Rest>({});
 
     RegisterComponents(ecsWorld);
     ecsWorld.set(AssetManager{});
@@ -30,9 +35,8 @@ void Application::Run() {
 
         ecsWorld.progress(GetFrameTime());
 
-        char stringBuffer[16];
-        sprintf(&stringBuffer[0], "%d", GetFPS());
-        DrawText(stringBuffer, 10, 30, 32, WHITE);
+        const auto fpsString = std::format("{}", GetFPS());
+        DrawText(fpsString.c_str(), 10, 30, 32, WHITE);
 
         EndDrawing();
     }

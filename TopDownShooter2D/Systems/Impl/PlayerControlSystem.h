@@ -5,7 +5,7 @@
 inline void PlayerControlSystem(const flecs::world &ecsWorld) {
     auto weaponsQuery = ecsWorld.query<Weapon>();
 
-    ecsWorld.system<Velocity>()
+    ecsWorld.system<Velocity>(__func__)
             .with<Player>()
             .each([weaponsQuery](Velocity &velocity) {
                 Vector2 newVelocity{};

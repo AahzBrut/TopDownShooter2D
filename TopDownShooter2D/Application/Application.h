@@ -5,9 +5,11 @@ class Application {
     flecs::world ecsWorld;
 
 public:
+    Application(const int argc, char ** argv): ecsWorld{argc, argv} {}
+
     void Run();
 
 private:
-    void Initialize() const;
+    void Initialize();
     void DeInitialize();
 };
