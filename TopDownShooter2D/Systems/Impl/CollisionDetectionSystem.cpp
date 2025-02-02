@@ -41,6 +41,14 @@ void ApplyBonus(const flecs::entity entity1, const Collider collider1, const fle
     bonusEntity.destruct();
 }
 
+bool IsPlayerCollidesWithBonus(const Collider &collider1, const Collider &collider2) {
+    return collider1.IsPlayer() && collider2.IsBonus() || collider1.IsBonus() && collider2.IsPlayer();
+}
+
+bool IsBulletCollidesWithEnemy(const Collider &collider1, const Collider &collider2) {
+    return collider1.IsEnemy() && collider2.IsBullet() || collider1.IsBullet() && collider2.IsEnemy();
+}
+
 void CollisionDetectionSystem(const flecs::world &ecsWorld) {
     const auto query = ecsWorld.query<const Position, const Collider>();
     const auto playerQuery = ecsWorld.query<const Player>();
@@ -53,8 +61,7 @@ void CollisionDetectionSystem(const flecs::world &ecsWorld) {
                 const flecs::entity entity2, const Position &position2, const Collider &collider2) {
                         if (entity1 >= entity2) return;
                         if (IsIntersects(position1, collider1, position2, collider2)) {
-                            if (collider1.IsEnemy() && collider2.IsBullet() || collider1.IsBullet() && collider2.
-                                IsEnemy()) {
+                            if (IsBulletCollidesWithEnemy(collider1, collider2)) {
                                 LOG("Bullet hits enemy");
                                 const auto enemyPosition =
                                         collider1.IsEnemy() ? position1.position : position2.position;
@@ -63,8 +70,7 @@ void CollisionDetectionSystem(const flecs::world &ecsWorld) {
                                     playerScore->amount += 10;
                                     SpawnBonus(ecsWorld, enemyPosition);
                                 }
-                            } else if (collider1.IsPlayer() && collider2.IsBonus() ||
-                                       collider1.IsBonus() && collider2.IsPlayer()) {
+                            } else if (IsPlayerCollidesWithBonus(collider1, collider2)) {
                                 ApplyBonus(entity1, collider1, entity2);
                                 return;
                             }
