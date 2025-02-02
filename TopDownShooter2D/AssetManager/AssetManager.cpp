@@ -36,7 +36,7 @@ void AssetManager::Clear() {
 
 void AssetManager::ClearUnused() {
     for (auto iterator = textures.begin(); iterator != textures.end();) {
-        if (iterator->second.unique()) {
+        if (iterator->second.use_count() == 1) {
             UnloadTexture(*iterator->second);
             iterator = textures.erase(iterator);
         } else {
@@ -45,7 +45,7 @@ void AssetManager::ClearUnused() {
     }
 
     for (auto iterator = soundEffects.begin(); iterator != soundEffects.end();) {
-        if (iterator->second.unique()) {
+        if (iterator->second.use_count() == 1) {
             UnloadSound(*iterator->second);
             iterator = soundEffects.erase(iterator);
         } else {
@@ -54,7 +54,7 @@ void AssetManager::ClearUnused() {
     }
 
     for (auto iterator = musicTrucks.begin(); iterator != musicTrucks.end();) {
-        if (iterator->second.unique()) {
+        if (iterator->second.use_count() == 1) {
             UnloadMusicStream(*iterator->second);
             iterator = musicTrucks.erase(iterator);
         } else {
@@ -63,7 +63,7 @@ void AssetManager::ClearUnused() {
     }
 
     for (auto iterator = fonts.begin(); iterator != fonts.end();) {
-        if (iterator->second.unique()) {
+        if (iterator->second.use_count() == 1) {
             UnloadFont(*iterator->second);
             iterator = fonts.erase(iterator);
         } else {
