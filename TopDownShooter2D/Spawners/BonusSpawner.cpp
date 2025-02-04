@@ -27,7 +27,7 @@ constexpr int bonusAmounts[] = {
 void SpawnBonus(const flecs::world &ecsWorld, const Vector2 &spawnPosition) {
     const auto assetManager = ecsWorld.get_mut<AssetManager>();
 
-    const auto bonusType = static_cast<BonusType>(RandomIntRange(0, 3));
+    const auto bonusType = static_cast<BonusType>(RandomIntRange(0, toInt(BonusType::LastItem) - 1));
 
     ecsWorld
             .entity()

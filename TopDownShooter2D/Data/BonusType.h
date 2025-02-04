@@ -5,5 +5,6 @@ enum class BonusType : int {
     PistolAmmo,
     ShotgunAmmo,
     SmgAmmo,
-    Health
+    Health,
+    LastItem
 };
