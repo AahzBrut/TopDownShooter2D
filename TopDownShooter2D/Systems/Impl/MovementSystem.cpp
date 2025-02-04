@@ -10,9 +10,11 @@
 
 
 void MovementSystem(const flecs::world &ecsWorld) {
+    const auto camera = ecsWorld.get_mut<Camera2D>();
+
     ecsWorld.system<Position, const Velocity>(__func__)
-            .each([](const flecs::iter &it, const size_t row, Position &position,
-                     const Velocity &velocity) {
+            .each([camera](const flecs::iter &it, const size_t row, Position &position,
+                           const Velocity &velocity) {
                 const auto deltaTime = it.delta_time();
                 const auto newPosition = position.position + velocity.velocity * deltaTime;
 
@@ -28,6 +30,8 @@ void MovementSystem(const flecs::world &ecsWorld) {
                                                 ? WINDOW_HEIGHT
                                                 : newPosition.y;
                     position.position = Vector2{posX, posY};
+                    camera->target = Vector2{posX, posY};
+                    camera->offset = Vector2{WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2};
                 } else {
                     position.position = newPosition;
                 }

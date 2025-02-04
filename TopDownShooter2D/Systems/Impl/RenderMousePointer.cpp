@@ -11,6 +11,7 @@ void RenderMousePointer(const flecs::world &ecsWorld) {
     ecsWorld.system(__func__)
             .kind(flecs::OnStore)
             .run([mousePointer, mousePointerWidth, mousePointerHeight](const flecs::iter &) {
+                EndMode2D();
                 const auto [mouseX, mouseY] = GetMousePosition();
                 DrawTexture(*mousePointer,
                             toInt(mouseX) - mousePointerWidth,

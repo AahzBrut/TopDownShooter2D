@@ -31,10 +31,10 @@ inline void RegisterSystems(const flecs::world &ecsWorld) {
     BulletDestructionSystem(ecsWorld);
     RenderGridSystem(ecsWorld);
     RenderSystem(ecsWorld);
+    RenderCollidersSystem(ecsWorld);
     RenderMousePointer(ecsWorld);
     RenderWeaponsHudSystem(ecsWorld);
     RenderPlayerHudSystem(ecsWorld);
-    RenderCollidersSystem(ecsWorld);
     MaintananceSystem(ecsWorld);
     SpawnEnemySystem(ecsWorld);
     EnemyControlSystem(ecsWorld);

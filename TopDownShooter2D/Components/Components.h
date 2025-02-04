@@ -35,4 +35,5 @@ inline void RegisterComponents(const flecs::world &ecsWorld) {
     ecsWorld.component<Collider>();
     ecsWorld.component<Damage>();
     ecsWorld.component<Bonus>();
+    ecsWorld.component<Camera2D>();
 }
