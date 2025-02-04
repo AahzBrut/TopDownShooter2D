@@ -47,8 +47,7 @@ void Application::Run() {
 }
 
 // ReSharper disable once CppMemberFunctionMayBeStatic
-void Application::DeInitialize() {
-    // NOLINT(*-convert-member-functions-to-static)
+void Application::DeInitialize() { // NOLINT(*-convert-member-functions-to-static)
     CloseAudioDevice();
     CloseWindow();
 }
