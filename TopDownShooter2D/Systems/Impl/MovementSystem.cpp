@@ -31,7 +31,7 @@ void MovementSystem(const flecs::world &ecsWorld) {
                                                 : newPosition.y;
                     position.position = Vector2{posX, posY};
                     camera->target = Vector2{posX, posY};
-                    camera->offset = Vector2{WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2};
+                    camera->offset = Vector2{toFloat(WINDOW_WIDTH) / 2, toFloat(WINDOW_HEIGHT) / 2};
                 } else {
                     position.position = newPosition;
                 }
